@@ -42,6 +42,8 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
     private int XPosition = random.nextInt(34);
     private int YPosition = random.nextInt(23);
 
+    private int score = 0;
+
     private int moves = 0;
 
     private ImageIcon titleImage;
@@ -82,6 +84,16 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
         g.setColor(Color.black);
         g.fillRect(25,75,850,575);
 
+        //draw scores
+        g.setColor(Color.white);
+        g.setFont(new Font("arial",Font.PLAIN, 14));
+        g.drawString("Scores: " + score, 780, 30);
+
+        //draw length of snake
+        g.setColor(Color.white);
+        g.setFont(new Font("arial",Font.PLAIN, 14));
+        g.drawString("Length: " + lengthOfSnake, 780, 50);
+
         rightmouth = new ImageIcon("rightmouth.png");
         rightmouth.paintIcon(this, g, snakeXLength[0],snakeYLength[0]);
 
@@ -112,12 +124,30 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
         enemyimage = new ImageIcon("enemy.png");
         //position of sneak head
         if((enemyXPosition[XPosition] == snakeXLength[0] && enemyYPosition[YPosition] == snakeYLength[0])){
+            score++;
             lengthOfSnake++;
             XPosition = random.nextInt(34);
             YPosition = random.nextInt(23);
         }
 
             enemyimage.paintIcon(this, g, enemyXPosition[XPosition], enemyYPosition[YPosition]);
+
+        for(int b = 1; b <lengthOfSnake; b++){
+            if(snakeXLength[b] == snakeXLength[0] && snakeYLength[b] == snakeYLength[0]){
+
+                right = false;
+                left = false;
+                up = false;
+                down = false;
+
+                g.setColor(Color.white);
+                g.setFont(new Font("arial",Font.BOLD,50));
+                g.drawString("Game Over",300,300);
+
+                g.setFont(new Font("arial",Font.BOLD,20));
+                g.drawString("Space to RESTART",350,340);
+            }
+        }
 
         g.dispose();
 
@@ -204,7 +234,14 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+        if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            moves = 0;
+            score = 0;
+            lengthOfSnake = 3;
+            repaint();
+        }
+
+        if(e.getKeyCode() == KeyEvent.VK_D){
             moves++;
             right = true;
             if(!left){
@@ -219,7 +256,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
             up = false;
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_LEFT){
+        if(e.getKeyCode() == KeyEvent.VK_A){
             moves++;
             left = true;
             if(!right){
@@ -234,7 +271,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
             up = false;
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_UP){
+        if(e.getKeyCode() == KeyEvent.VK_W){
             moves++;
             up = true;
             if(!down){
@@ -249,7 +286,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
             right = false;
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_DOWN){
+        if(e.getKeyCode() == KeyEvent.VK_S){
             moves++;
             down = true;
             if(!up){
