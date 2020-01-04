@@ -27,10 +27,12 @@ public class Buttons implements ActionListener{
             panel.setScreenMode(Display.Menu);
         }else if(panel.singleButton == e.getSource()) {
             panel.setScreenMode(Display.Game);
-            Main.startSinglePlayer(true);
-        }else if(panel.localButton == e.getSource()) {
-            panel.setScreenMode(Display.LocalGame);
-            Main.startLocalPlayer(true);
+
+            Main.startSinglePlayer(true, SPanel.nickname);
+
+        }else if(panel.multiplayerButton == e.getSource()) {
+            panel.setScreenMode(Display.multiplayerGame);
+            Main.startMultiplayerGame(true);
         }else if(panel.onlineButton == e.getSource()) {
             panel.setScreenMode(Display.OnlineMenu);
         }else if(panel.connectButton == e.getSource()){
@@ -47,20 +49,22 @@ public class Buttons implements ActionListener{
         }else if(panel.slowSpeedButton == e.getSource()) {
             if(SingleMode.running == true){
                 panel.setScreenMode(Display.Game);
-                Main.startSinglePlayer(false);
+                Main.startSinglePlayer(false, SPanel.nickname);
             } else {
-                panel.setScreenMode(Display.LocalGame);
-                Main.startLocalPlayer(false);
+                panel.setScreenMode(Display.multiplayerGame);
+                Main.startMultiplayerGame(false);
             }
         } else if (panel.fastSpeedButton == e.getSource()) {
             if(SingleMode.running == true) {
                 panel.setScreenMode(Display.Game);
-                Main.startSinglePlayer(true);
+                Main.startSinglePlayer(true, SPanel.nickname);
             } else {
-                panel.setScreenMode(Display.LocalGame);
-                Main.startLocalPlayer(true);
+                panel.setScreenMode(Display.multiplayerGame);
+                Main.startMultiplayerGame(true);
             }
 
+        } else if(panel.enterButton == e.getSource()) {
+            panel.setScreenMode(Display.Menu);
         }
 
     }

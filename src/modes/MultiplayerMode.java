@@ -13,7 +13,7 @@ public class MultiplayerMode extends GameMode implements Runnable{
     // Game Properties
     public static boolean running = false;
     public static boolean paused = false;
-    static int gameSpeed = 100000000;
+    public static int gameSpeed = 100000000;
 
     public MultiplayerMode() {
         snakes = new ArrayList<Snake>();

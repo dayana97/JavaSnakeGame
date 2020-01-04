@@ -29,19 +29,19 @@ public class KeyInput implements KeyListener{
             }
         }
 
-        if(Main.localThread.isAlive()) {
+        if(Main.multiplayerThread.isAlive()) {
             if(e.getKeyCode() == KeyEvent.VK_W) {
-                if(Main.localGame.getSnake(0).getMoves() != Moves.down)
-                    Main.localGame.getSnake(0).setMoves(Moves.up);
+                if(Main.multiplayerGame.getSnake(0).getMoves() != Moves.down)
+                    Main.multiplayerGame.getSnake(0).setMoves(Moves.up);
             }else if(e.getKeyCode() == KeyEvent.VK_D) {
-                if(Main.localGame.getSnake(0).getMoves() != Moves.left)
-                    Main.localGame.getSnake(0).setMoves(Moves.right);
+                if(Main.multiplayerGame.getSnake(0).getMoves() != Moves.left)
+                    Main.multiplayerGame.getSnake(0).setMoves(Moves.right);
             }else if(e.getKeyCode() == KeyEvent.VK_S) {
-                if(Main.localGame.getSnake(0).getMoves() != Moves.up)
-                    Main.localGame.getSnake(0).setMoves(Moves.down);
+                if(Main.multiplayerGame.getSnake(0).getMoves() != Moves.up)
+                    Main.multiplayerGame.getSnake(0).setMoves(Moves.down);
             }else if(e.getKeyCode() == KeyEvent.VK_A) {
-                if(Main.localGame.getSnake(0).getMoves() != Moves.right)
-                    Main.localGame.getSnake(0).setMoves(Moves.left);
+                if(Main.multiplayerGame.getSnake(0).getMoves() != Moves.right)
+                    Main.multiplayerGame.getSnake(0).setMoves(Moves.left);
             }else if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 MultiplayerMode.paused = !MultiplayerMode.paused;
                 if(!MultiplayerMode.running) {
@@ -50,17 +50,17 @@ public class KeyInput implements KeyListener{
             }
 
             if(e.getKeyCode() == KeyEvent.VK_UP) {
-                if(Main.localGame.getSnake(1).getMoves() != Moves.down)
-                    Main.localGame.getSnake(1).setMoves(Moves.up);
+                if(Main.multiplayerGame.getSnake(1).getMoves() != Moves.down)
+                    Main.multiplayerGame.getSnake(1).setMoves(Moves.up);
             }else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                if(Main.localGame.getSnake(1).getMoves() != Moves.left)
-                    Main.localGame.getSnake(1).setMoves(Moves.right);
+                if(Main.multiplayerGame.getSnake(1).getMoves() != Moves.left)
+                    Main.multiplayerGame.getSnake(1).setMoves(Moves.right);
             }else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-                if(Main.localGame.getSnake(1).getMoves() != Moves.up)
-                    Main.localGame.getSnake(1).setMoves(Moves.down);
+                if(Main.multiplayerGame.getSnake(1).getMoves() != Moves.up)
+                    Main.multiplayerGame.getSnake(1).setMoves(Moves.down);
             }else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
-                if(Main.localGame.getSnake(1).getMoves() != Moves.right)
-                    Main.localGame.getSnake(1).setMoves(Moves.left);
+                if(Main.multiplayerGame.getSnake(1).getMoves() != Moves.right)
+                    Main.multiplayerGame.getSnake(1).setMoves(Moves.left);
             }
         }
 

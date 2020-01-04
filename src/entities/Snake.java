@@ -1,6 +1,7 @@
 package entities;
 import game.Constants;
 import game.Point;
+import modes.MultiplayerMode;
 
 import javax.swing.*;
 import java.awt.Color;
@@ -28,8 +29,9 @@ public class Snake extends Entity{
     ImageIcon downMouth;
     ImageIcon snakeImage;
     boolean snake1 = false;
+    private String nickname;
 
-    public Snake() {
+    public Snake(){
         snake1 = true;
         location = new ArrayList<Point>();
         moves = Moves.right;
@@ -185,7 +187,12 @@ public class Snake extends Entity{
                     snakeImage.paintIcon(null, g,location.get(i).getX() + offX, location.get(i).getY() + offY);
                 }
                 g.setColor(Color.WHITE);
-                g.drawString("Scores: " + String.valueOf(location.size()), 780, 30);
+                if(MultiplayerMode.running == true){
+                    g.drawString(" Player 1 Scores: " + String.valueOf(location.size()), 780, 30);
+                } else {
+                    g.drawString(nickname + " Scores: " + String.valueOf(location.size()), 780, 30);
+                }
+
 
             } else {
                 if(i == 0 & right){
@@ -209,15 +216,18 @@ public class Snake extends Entity{
                     snakeImage.paintIcon(null, g,location.get(i).getX() + offX, location.get(i).getY() + offY);
                 }
                 g.setColor(Color.WHITE);
-                g.drawString("Scores: " + String.valueOf(location.size()), 780, 30);
+                g.drawString("Player 2 Scores: " + String.valueOf(location.size()), 780, 15);
             }
             }
 
-        if(snake1){
-
-        } else {
-            g.drawString("Scores: " + String.valueOf(location.size()), 780, 40);
-        }
        // g.drawString(String.valueOf(location.size()), location.get(0).getX() + offX, location.get(0).getY() + offY);
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

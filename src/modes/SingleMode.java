@@ -7,8 +7,8 @@ public class SingleMode extends GameMode implements Runnable{
     // Game Properties
     public static boolean running = false;
     public static boolean paused = false;
-    static int gameSpeed = 100000000;
-
+    public static int gameSpeed = 100000000;
+    private String nickname;
     // Entities
     Snake snake;
     Snack snack;
@@ -58,5 +58,14 @@ public class SingleMode extends GameMode implements Runnable{
 
     public Snack getSnack() {
         return snack;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+        snake.setNickname(nickname);
     }
 }
